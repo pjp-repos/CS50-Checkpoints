@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <h1>{{listTitle}}</h1>
+
+    <ul>
+        {% for entry in entries %}
+            <li> <a href="{% url 'entry' pathRecived=entry %}"> {{entry}}</a> </li> 
+        {% empty%}
+            <li> No search results </li> 
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+{% block search %}
+    <form action= "{% url 'index' %}"  method="post">
+        {% csrf_token %}
+        {{searchForm}}
+    </form>
+{% endblock %}

@@ -1,0 +1,73 @@
+.menu-container{
+    padding-top: 8px;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+.menu-label{
+    font-size: 20px;
+    font-weight: bold;
+    color:blue;
+    padding-right: 6px;
+    padding-top: 6px;
+}
+.menu-item{
+    margin: 5px;
+}
+.vnp_btnSave{
+    padding: 3px;
+}
+.vplDiv_follow{
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: lightgray;
+    margin: 3px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;    
+}
+
+.vplDiv_users{
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: lightgray;
+    margin: 3px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+.vplSel_users{
+    min-width: 50%;
+    border-radius: 4px;
+    border-color: darkgrey;
+}
+.vplDiv_selectUser{
+    min-width: 70%;
+}
+
+.vplDiv_post{
+    border-style: solid;
+    border-width: 0.5px;
+    border-color: lightgray;
+    margin: 3px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.vplCon_poster{
+    font-size: 24px;
+    font-weight: bold;
+}
+.vplCon_firstTimeStamp{
+    font-size: 14px;
+    color:lightslategray;
+    padding-top: 4px;
+}
+.vplDiv_pagination{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 6px;
+}

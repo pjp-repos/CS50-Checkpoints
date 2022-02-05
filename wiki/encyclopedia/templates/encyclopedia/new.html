@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    New Page
+{% endblock %}
+
+{% block body %}
+    <h1>{{title}}</h1>
+    {% if errorAlreadyExist %}
+        <h2>Title of entry already exist!. Change it and try again!</h2>
+    {% endif %}
+    <form action= "{% url 'new' %}"  method="post">
+        {% csrf_token %}
+        {{newForm}}
+        <input type="submit">
+    </form>
+{% endblock %}
+
+{% block search %}
+    <form action= "{% url 'index' %}"  method="post">
+        {% csrf_token %}
+        {{searchForm}}
+    </form>
+{% endblock %}

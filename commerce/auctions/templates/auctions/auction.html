@@ -1,0 +1,99 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2 class="test">Listing: {{auction.0.title}}</h2>
+         <div class="auc-auction-container">
+            <div class="auc-image-container">
+                <img class="auc-image" src="{{auction.0.photo}}"/>
+            </div>
+            <div class="auc-details-container">
+                <div class="auc-title">
+                    <label>{{auction.0.title}}</label>
+                </div> 
+                <div class="auc-startBid">
+                    {% if auction.0.startBid > maxBid or maxBid == None %}
+                        <label>Current price: {{auction.0.startBid}}</label>
+                    {% else %}
+                        <label>Current price: {{maxBid}}</label>
+                    {% endif %}
+                </div> 
+                <div class="auc-description">
+                    <p >{{auction.0.description}}</p>
+                </div> 
+                <div class="auc-user">
+                    <p >By: {{auction.0.user.username}}</p>
+                </div> 
+            </div>                   
+        </div>
+        <div>
+            {% if user.is_authenticated %}
+                {% if auction.0.status %}
+                    {% if user.username == auction.0.winnerUserName %}
+                        <label>Listing closed!. Your are the winner for this listing!</label>
+                    {% else %}
+                        <label>Listing closed!.</label>
+                    {% endif %}
+                {% else %}
+                    {% if user.username == auction.0.winnerUserName %}
+                        <label>Your bid is the current bid!</label>
+                    {% endif %}
+                    {% if user == auction.0.user %}
+                        <div class="auc-auction-container">
+                            <form action= "{% url 'auction' %}"  method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="closeId" value={{auction.0.id}}>
+                                <input type="hidden" name="closeFlag" value="close">
+                                <input type="submit" value="Close this listing">
+                            </form>  
+                        </div>              
+                    {% else %}
+                        <div class="auc-auction-container">
+                            <form action= "{% url 'auction' %}"  method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="watchlistId" value={{auction.0.id}}>
+                                {% if isInWatchlist == 0 %}
+                                    <input type="hidden" name="watchlistCmd" value="add">
+                                    <input type="submit" value="Add to watchlist">
+                                {% elif isInWatchlist > 0 %}
+                                    <input type="hidden" name="watchlistCmd" value="rem">
+                                    <input type="submit" value="Remove from watchlist">
+                                {% endif %}
+                            </form>
+                        </div>
+                        <div class="auc-auction-container">
+                            <form action= "{% url 'auction' %}"  method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="bidId" value={{auction.0.id}}>
+                                <input type="hidden" name="bidFlag" value='bid'>                    
+                                <input type="text" name="bidValue" >
+                                <input type="submit" value="Place a bid">
+                            </form>
+                        </div>
+                        {% if errorBidCode == '2' %}
+                            <label>Error message: You must enter a numeric value</label>
+                        {% elif errorBidCode == '1' %}
+                            <label>Error message: Your bid must be greater than current price</label>
+                        {% endif %}
+                    {% endif %}
+                    <div class="auc-auction-container">
+                        <form action= "{% url 'auction' %}"  method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="commentId" value={{auction.0.id}}>
+                            <input type="hidden" name="commentFlag" value='comment'>  
+                            <textarea class = "auc-comment-textarea" name="commentValue"  maxlength="100"></textarea>                  
+                            <input type="submit" value="Send comment">
+                        </form>
+                    </div>
+                    <div class="auc-comment-container">
+                        <div>Comments for this listing</div>
+                        {% for comment in comments %}
+                            <div>--> {{comment.user.username}} : {{comment.comment}}</div>
+                        {% empty %}
+                            <div>No comments yet!</div>
+                        {% endfor %}
+                    </div>
+                {% endif %} 
+            {% endif %}
+        </div>              
+
+{% endblock %}

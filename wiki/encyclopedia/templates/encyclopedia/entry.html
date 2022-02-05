@@ -1,0 +1,14 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    {{entryTitle}}
+{% endblock %}
+
+{% block body %}
+    {% if visibleLink %}
+        <a href="{% url 'update' entryTitle=entryTitle %}"> Update Page</a>
+    {% endif %}
+    
+   {{entryContent}}
+
+{% endblock %}

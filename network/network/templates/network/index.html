@@ -1,0 +1,35 @@
+{% extends "network/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <!--Navigation system-->
+    <div class='menu-container'>
+        <div class='menu-label'> <label>Network</label></div>
+        <div class='menu-item'> <button class="btn btn-sm btn-outline-primary" id="menu-profile">{{ user.username }}</button> </div>
+        <div class='menu-item'> <button class="btn btn-sm btn-outline-primary" id="menu-newPost">New Posts</button> </div>
+        <div class='menu-item'> <button class="btn btn-sm btn-outline-primary" id="menu-all">All Posts</button> </div>
+        <div class='menu-item'> <button class="btn btn-sm btn-outline-primary" id="menu-following">Following</button> </div>
+        <div class='menu-item'> <a class="btn btn-sm btn-outline-primary" href="{% url 'logout' %}">Log Out</a> </div>
+    </div>
+
+    <hr>
+    <input type="hidden" id="currentUser" value='{{ user.id }}'>
+    <!--VIEW: Create new posts -->
+    <div id="view-NewPost"> 
+        <h3>New post</h3>
+        <div class="form-group">
+            <textarea id="vnpTxt_PostText" class="form-control"  placeholder="Body"></textarea>
+            <div id="vnpDiv_Save" class='vnp_btnSave'>
+
+            </div>           
+        </div>
+    </div>
+    <div id="view-PostsList">
+
+ 
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'network/network.js' %}"></script>
+{% endblock %}

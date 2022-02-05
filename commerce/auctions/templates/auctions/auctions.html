@@ -1,0 +1,33 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Auctions {{listType}}</h2>
+        {% for auction in auctions%}
+            <div class="auc-auction-container">
+                <div class="auc-image-container">
+                    <img class="auc-image" src="{{auction.photo}}"/>
+                </div>
+                <div class="auc-details-container">
+                    <div class="auc-title">
+                        <a  href="{% url 'auction' %}?auction_id={{ auction.id }}"> {{auction.title}}</a> 
+                    </div> 
+                    <div class="auc-startBid">
+                        {% if auction.0.startBid > maxBid or maxBid == None %}
+                            <label>Current price: {{auction.startBid}}</label>
+                        {% else %}
+                            <label>Current price: {{maxBid}}</label>
+                        {% endif %}
+                    </div> 
+                    <div class="auc-description">
+                        <p >{{auction.description}}</p>
+                    </div> 
+                    <div class="auc-user">
+                        <p >By: {{auction.user.username}}</p>
+                    </div> 
+                </div>                   
+            </div>  
+        {% empty%}
+            <label>No auctions found</label>
+        {%endfor%}      
+
+{% endblock %}

@@ -1,0 +1,171 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-family: arial,sans-serif;
+}
+.MainContainer{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.NavBar{
+    position:relative;
+    height: 48px;
+    padding: 8px 15px;    
+}
+.MenuContainer{    
+    height: 48px;    
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font: 13px/27px Roboto,RobotoDraft,Arial,sans-serif;
+    font-style: normal;
+    font-size: 13px;
+}
+.MenuImageContainer{
+    height:37px;
+    width:85px;
+}
+.MenuItemContainer{
+    padding-left: 15px;    
+}
+.MenuItem{
+    color: rgba(0,0,0,0.87);
+    text-decoration: none;
+}
+.MenuItem:hover{
+    text-decoration: underline;
+}
+
+.TitleBlock{
+    color: #d93025;
+    font-size: 20px;
+    margin: 25px 35px;
+}
+
+.SeparatorLine{
+    display: block;
+    border-bottom: 1px solid #ebebeb;
+}
+.FormContainerAv{
+    max-width: 1140px;
+    min-width: 200px;
+    width: 96%;
+    margin: 24px 2% 0 45px;
+    padding-top: 10px;
+}
+.FormBlock{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.Col1Title{
+    min-width: 167px;
+    width: 16%;
+    height: 42px;
+    color: #222;
+    font-size: 16px;
+    line-height: 42px;
+    vertical-align: middle;
+}
+.Col2Title{
+    display: flex;
+    align-items: center;
+    min-width: 167px;
+    width: 50%;
+    height: 42px;
+}
+.Col3Title{
+    min-width: 160px;
+    width: 32%;    
+    height: 42px;
+    color: #777;
+    font-size: 11px;
+    padding-left: 0px;
+    padding-right: 25px;
+    display: table;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 700;
+}
+.Col3Title p {
+    display: table-cell;
+    vertical-align: middle;
+}
+.Col1{
+    min-width: 167px;
+    width: 16%;
+    height: 42px;
+    color: #222;
+    font-size: 13px;
+    line-height: 42px;
+    vertical-align: middle;
+}
+.Col2{
+    display: flex;
+    align-items: center;
+    min-width: 167px;
+    width: 50%;
+    height: 42px;
+}
+.Col3{
+    min-width: 160px;
+    width: 32%;    
+    height: 42px;
+    color: #555;
+    font-size: 11px;
+    padding-left: 10px;
+    padding-right: 15px;
+    display: table;
+    text-align: left;
+}
+.Col3 p {
+    display: table-cell;
+    vertical-align: middle;
+}
+.InputBoxAdv{ 
+    border-radius: 1px;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    font-size: 13px;
+    height: 25px;
+    padding: 1px 8px;
+    width: 100%;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.InputBoxAdv:focus{
+    box-shadow: inset 0 1px 2px rgb(0 0 0 / 30%);
+    border: 1px solid #4d90fe;
+    outline: none;
+}
+
+.SubmitButtonContainer{ 
+    display: flex;
+    justify-content:flex-end; 
+    align-items: flex-end;  
+    height: 100%;
+    width: 100%;   
+}
+.SubmitButton{
+    height: 30px;
+    width: 120px;
+    box-shadow: none;
+    background-color: #4d90fe;
+    border: 1px solid #3079ed;
+    color: #fff;
+    border-radius: 2px;
+    cursor: default;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    outline: 0;
+}
+.SubmitButton:hover {
+    background-color: #357ae8;
+    border: 1px solid #2f5bb7;
+}
